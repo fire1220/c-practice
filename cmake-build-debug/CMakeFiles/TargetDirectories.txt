@@ -1,3 +1,0 @@
-/Users/chang/docker/dockerShareDir/www/c-practice/cmake-build-debug/CMakeFiles/c_practice.dir
-/Users/chang/docker/dockerShareDir/www/c-practice/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/chang/docker/dockerShareDir/www/c-practice/cmake-build-debug/CMakeFiles/rebuild_cache.dir
