@@ -1,0 +1,10 @@
+# ninja log v5
+0	114	1711637450551513865	CMakeFiles/c_practice.dir/main.c.o	246288c5e35fc92f
+0	76	1711637543941113646	CMakeFiles/c_practice.dir/main.c.o	246288c5e35fc92f
+1	84	1711637543954463689	CMakeFiles/c_practice.dir/adlist.c.o	ff206d597c9bce13
+85	200	1711637544073301949	c_practice	d6ba1154f13627c
+2	149	1711637625550304811	CMakeFiles/c_practice.dir/main.c.o	246288c5e35fc92f
+2	164	1711637625563096408	CMakeFiles/c_practice.dir/adlist.c.o	ff206d597c9bce13
+164	314	1711637625719434354	c_practice	d6ba1154f13627c
+1	71	1711637634246448033	CMakeFiles/c_practice.dir/adlist.c.o	ff206d597c9bce13
+71	182	1711637634361462083	c_practice	d6ba1154f13627c

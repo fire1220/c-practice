@@ -19,4 +19,4 @@ typedef struct list {
 } list;
 
 
-list createList(void);
+list *listCreate(void);

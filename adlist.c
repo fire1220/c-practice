@@ -6,12 +6,12 @@
 #include <stdlib.h>
 #include "adlist.h"
 
-list createList(void)
+list *listCreate(void)
 {
     list *list;
     if ((list = malloc(sizeof(*list))) == NULL)
         return NULL;
-    list->len = 0;
+    list->len = 10;
     list->head = list->tail = NULL;
     list->dup = NULL;
     list->free = NULL;

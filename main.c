@@ -2,7 +2,7 @@
 #include "adlist.h"
 
 int main() {
-    list x = createList();
-    printf("%lu", x.len);
+    list *x = listCreate();
+    printf("%lu\n", x->len);
     return 0;
 }
