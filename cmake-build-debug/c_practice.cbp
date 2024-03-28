@@ -78,6 +78,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/fire/docker/dockerShareDir/www/c-practice/adlist.c">
+			<Option target="c_practice"/>
+		</Unit>
+		<Unit filename="/Users/fire/docker/dockerShareDir/www/c-practice/adlist.h">
+			<Option target="c_practice"/>
+		</Unit>
 		<Unit filename="/Users/fire/docker/dockerShareDir/www/c-practice/main.c">
 			<Option target="c_practice"/>
 		</Unit>

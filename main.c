@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include "adlist.h"
 
 int main() {
-    printf("Hello, World!\n");
+    list x = createList();
+    printf("%lu", x.len);
     return 0;
 }

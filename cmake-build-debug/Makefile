@@ -142,6 +142,33 @@ c_practice/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_practice.dir/build.make CMakeFiles/c_practice.dir/build
 .PHONY : c_practice/fast
 
+adlist.o: adlist.c.o
+
+.PHONY : adlist.o
+
+# target to build an object file
+adlist.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_practice.dir/build.make CMakeFiles/c_practice.dir/adlist.c.o
+.PHONY : adlist.c.o
+
+adlist.i: adlist.c.i
+
+.PHONY : adlist.i
+
+# target to preprocess a source file
+adlist.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_practice.dir/build.make CMakeFiles/c_practice.dir/adlist.c.i
+.PHONY : adlist.c.i
+
+adlist.s: adlist.c.s
+
+.PHONY : adlist.s
+
+# target to generate assembly for a file
+adlist.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_practice.dir/build.make CMakeFiles/c_practice.dir/adlist.c.s
+.PHONY : adlist.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -178,6 +205,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... c_practice"
+	@echo "... adlist.o"
+	@echo "... adlist.i"
+	@echo "... adlist.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

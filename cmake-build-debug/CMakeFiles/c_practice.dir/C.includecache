@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/fire/docker/dockerShareDir/www/c-practice/adlist.c
+stdlib.h
+-
+adlist.h
+/Users/fire/docker/dockerShareDir/www/c-practice/adlist.h
+
+/Users/fire/docker/dockerShareDir/www/c-practice/adlist.h
+

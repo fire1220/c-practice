@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/Users/fire/docker/dockerShareDir/www/c-practice/adlist.c" "/Users/fire/docker/dockerShareDir/www/c-practice/cmake-build-debug/CMakeFiles/c_practice.dir/adlist.c.o"
   "/Users/fire/docker/dockerShareDir/www/c-practice/main.c" "/Users/fire/docker/dockerShareDir/www/c-practice/cmake-build-debug/CMakeFiles/c_practice.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
