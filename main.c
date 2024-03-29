@@ -8,7 +8,7 @@ int main() {
     // listPrint(x);
     sds s = sdsnew("hello world");
     printf("%s\n", s);
-
+    printf("%s\n", );
 
     return 0;
 }
