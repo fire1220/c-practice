@@ -3,4 +3,4 @@ project(c_practice C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(c_practice main.c adlist.c adlist.h)
+add_executable(c_practice main.c adlist.c adlist.h sds.h sds.c)

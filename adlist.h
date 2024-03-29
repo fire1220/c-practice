@@ -19,4 +19,6 @@ typedef struct list {
 } list;
 
 
+char *listPrint(struct list *list);
 list *listCreate(void);
+list *listAddNodeHead(list *list, void *value);
