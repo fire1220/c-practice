@@ -8,7 +8,8 @@ int main() {
     // listPrint(x);
     sds s = sdsnew("hello world");
     printf("%s\n", s);
-    printf("%s\n", );
+    printf("%d\n", sdslen(s));
+    printf("%d\n", sdsavail(s));
 
     return 0;
 }

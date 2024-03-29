@@ -12,3 +12,5 @@ typedef struct sdshdr{
 
 sds sdsnew(const char *init);
 sds sdsnewlen(const char *init, size_t initLen);
+int sdslen(const sds s);
+int sdsavail(const sds s);
