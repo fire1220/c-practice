@@ -27,16 +27,3 @@ sds sdsnewlen(const char *init, size_t initLen)
     sh->buf[initLen] = '\0';
     return (char*)sh->buf;
 }
-
-int sdslen(const sds s)
-{
-    // 内存写入是从低地址到高地址，所有第一个元素在低地址，最后一个元素在高地址
-    struct sdshdr *sh = (void *)(s - (sizeof(struct sdshdr)));
-    return sh->len;
-}
-
-int sdsavail(const sds s)
-{
-    struct sdshdr *sh = (void *)(s - sizeof(struct sdshdr));
-    return sh->free;
-}
