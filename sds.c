@@ -19,6 +19,9 @@ sds sdsnewlen(const char *init, size_t initLen)
     } else {
         sh = calloc(1, sizeof(*sh) + initLen + 1);
     }
+
+    if(sh == NULL) return NULL;
+
     if (initLen && init) {
         memcpy(sh->buf, init, initLen);
     }
@@ -26,4 +29,20 @@ sds sdsnewlen(const char *init, size_t initLen)
     sh->free = 0;
     sh->buf[initLen] = '\0';
     return (char*)sh->buf;
+}
+
+sds sdsempty(void)
+{
+    return sdsnewlen("", 0);
+}
+
+sds sdsdup(const sds s)
+{
+    return sdsnewlen(s, sdslen(s));
+}
+
+void sdsfree(sds s)
+{
+    if (s == NULL) return;
+    free(s - sizeof(struct sdshdr));
 }

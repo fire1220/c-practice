@@ -10,12 +10,12 @@ typedef struct sdshdr{
     char buf[];
 } sdshdr;
 
-static inline int sdslen(const sds s) {
+static inline size_t sdslen(const sds s) {
     // 内存写入是从低地址到高地址，所有第一个元素在低地址，最后一个元素在高地址
     struct sdshdr *sh = (void *)(s - sizeof(struct sdshdr));
     return sh->len;
 }
-static inline int sdsavail(const sds s)
+static inline size_t sdsavail(const sds s)
 {
     struct sdshdr *sh = (void *)(s - sizeof(struct sdshdr));
     return sh->free;
@@ -23,5 +23,8 @@ static inline int sdsavail(const sds s)
 
 sds sdsnew(const char *init);
 sds sdsnewlen(const char *init, size_t initLen);
-int sdslen(const sds s);
-int sdsavail(const sds s);
+sds sdsempty(void);
+size_t sdslen(const sds s);
+sds sdsdup(const sds s);
+size_t sdsavail(const sds s);
+void sdsfree(sds s);
