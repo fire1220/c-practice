@@ -45,4 +45,5 @@ void sdsfree(sds s)
 {
     if (s == NULL) return;
     free(s - sizeof(struct sdshdr));
+    s = NULL;
 }

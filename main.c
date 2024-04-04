@@ -10,6 +10,8 @@ int main() {
     printf("%s\n", s);
     printf("%d\n", sdslen(s));
     printf("%d\n", sdsavail(s));
+    sdsfree(s);
+    printf("free：%d\n", sdslen(s));
 
     return 0;
 }
