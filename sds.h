@@ -21,10 +21,10 @@ static inline size_t sdsavail(const sds s)
     return sh->free;
 }
 
-sds sdsnew(const char *init);
 sds sdsnewlen(const char *init, size_t initLen);
+sds sdsnew(const char *init);
 sds sdsempty(void);
 size_t sdslen(const sds s);
 sds sdsdup(const sds s);
-size_t sdsavail(const sds s);
 void sdsfree(sds s);
+size_t sdsavail(const sds s);
