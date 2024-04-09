@@ -8,10 +8,10 @@ int main() {
     // listPrint(x);
     sds s = sdsnew("hello world");
     printf("%s\n", s);
-    printf("%d\n", sdslen(s));
-    printf("%d\n", sdsavail(s));
+    printf("%zu\n", sdslen(s));
+    printf("%zu\n", sdsavail(s));
     sdsfree(s);
-    printf("free：%d\n", sdslen(s));
+    printf("free：%zu\n", sdslen(s));
 
     return 0;
 }
