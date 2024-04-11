@@ -4,9 +4,10 @@ string(REPLACE " " "_" projectName ${projectName}) # 把空格替换成下划线
 project(${projectName} C) # C的项目名称,如果是C++则把C更改成C++
 set(CMAKE_C_STANDARD 11) # C语言版本
 
-#set(RedisDir redis/) # 设置执行文件的目录,用于切换执行目录
-set(RedisDir test-extern)
-# set(RedisDir ) # 切换成当前目录
+# set(RedisDir redis/) # 设置执行文件的目录,用于切换执行目录
+set(RedisDir test)
+# set(RedisDir test-extern)
+# set(RedisDir ) # 切换成跟目录
 
 set(RedisDir ${RedisDir}/)
 set(srcList ${projectName}) # 需要导入的文件名变量，这里把项目名称写到变量里
