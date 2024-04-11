@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.19) # CMake最低版本
 get_filename_component(projectName ${CMAKE_CURRENT_SOURCE_DIR} NAME) # 获取目录名称
 string(REPLACE " " "_" projectName ${projectName}) # 把空格替换成下划线（_）
-project(${projectName} C) # 项目名称
+project(${projectName} C) # C的项目名称,如果是C++则把C更改成C++
 set(CMAKE_C_STANDARD 11) # C语言版本
 
 #set(RedisDir redis/) # 设置执行文件的目录,用于切换执行目录
