@@ -3,6 +3,7 @@
 //
 
 // 测试文件
+#include "base.h"
 #include "adlist_test.h"
 #include "adlist.h"
 #include "sds.h"
@@ -19,6 +20,7 @@ void TestAdList() {
     l = listAddNodeHead(l, sdsnew("篮球1"));
     l = listAddNodeHead(l, sdsnew("足球2"));
     l = listAddNodeHead(l, sdsnew("排球3"));
-    listPrint(l);
+    // listPrint(l);
+    fmtPrint(l);
 }
 #endif
