@@ -11,15 +11,16 @@
 
 char *listPrint(list *list)
 {
-    printf("list (%lu) \n",  list->len);
+    printf("list (%lu) {\n",  list->len);
     listNode *temp = list->head;
     for (int i=0; i < list->len; i++) {
-        printf("[%d] => \"%s\"\n", i, (sds)temp->value);
+        printf("\t[%d] => \"%s\"\n", i, (sds)temp->value);
         temp = temp->next;
         if (temp == NULL) {
             break;
         }
     }
+    printf("}\n");
     return NULL;
 }
 

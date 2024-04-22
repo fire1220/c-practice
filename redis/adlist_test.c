@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "adlist_test.h"
 #include "adlist.h"
+#include "sds.h"
 
 #ifndef TEST_AD_LIST
 #define TEST_AD_LIST 1
@@ -17,6 +18,8 @@ void TestAdList(){
 #else
 void TestAdList(){
     list *l = listCreate();
+    l = listAddNodeHead(l, sdsnew("篮球1"));
+    l = listAddNodeHead(l, sdsnew("足球2"));
     listPrint(l);
 }
 #endif
