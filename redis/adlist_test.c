@@ -5,13 +5,11 @@
 #include "adlist_test.h"
 #include "adlist.h"
 #include "sds.h"
+#include "base.h"
 
 #ifndef TEST_AD_LIST
     #define TEST_AD_LIST 1
 #endif
-
-#define fmtPrint(x) _Generic((x), list*:listPrint)(x)
-
 
 #if TEST_AD_LIST==0
 void TestAdList(){}
