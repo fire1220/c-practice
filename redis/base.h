@@ -5,11 +5,10 @@
 #define C_PRACTICE_BASE_H
 
 
-
 #define fmtPrint(x) _Generic((x), \
-                        list*:listPrint)(x)
-#
+list*:listPrint \
+)(x)
 
-
-
+static void charPrint(char *s) {
+}
 #endif //C_PRACTICE_BASE_H
