@@ -13,9 +13,7 @@
 #endif
 
 #if TEST_AD_LIST==0
-void TestAdList() {
-    printf("测试已经关闭了");
-}
+void TestAdList() {}
 #else
 void TestAdList() {
     list *l = listCreate();
