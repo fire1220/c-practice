@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include "sds.h"
 
-char *listPrint(list *list)
+void listPrint(list *list)
 {
     printf("list (%lu) {\n",  list->len);
     listNode *temp = list->head;
@@ -21,7 +21,6 @@ char *listPrint(list *list)
         }
     }
     printf("}\n");
-    return NULL;
 }
 
 list *listCreate(void)

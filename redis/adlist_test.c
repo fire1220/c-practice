@@ -10,6 +10,8 @@
     #define TEST_AD_LIST 1
 #endif
 
+#define fmtPrint(x) _Generic((x), list*:listPrint)(x)
+
 
 #if TEST_AD_LIST==0
 void TestAdList(){}
@@ -19,6 +21,7 @@ void TestAdList(){
     l = listAddNodeHead(l, sdsnew("篮球1"));
     l = listAddNodeHead(l, sdsnew("足球2"));
     l = listAddNodeHead(l, sdsnew("排球3"));
-    listPrint(l);
+    // listPrint(l);
+    fmtPrint(l);
 }
 #endif
