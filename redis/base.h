@@ -7,13 +7,30 @@
 #include <stdio.h>
 #include "adlist.h"
 #include "sds.h"
+typedef struct people {
+    int age;
+    char *name ;
+}people;
 
 #define fmtPrint(x) _Generic((x), \
 list*:listPrint,                  \
-sds*:sdsPrint,                     \
+sds*:sdsPrint,                    \
+size_t:sizeTPrint,                \
 char*:charPrint)(x)
 
-static void charPrint(char *s) {
+static void charPrint(char *s)
+{
     printf("%s\n", s);
 }
+
+static void sizeTPrint(size_t i)
+{
+    printf("%zu\n", i);
+}
+
+static void intPrint(int i)
+{
+    printf("%d\n", i);
+}
+
 #endif //C_PRACTICE_BASE_H

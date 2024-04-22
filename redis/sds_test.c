@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include "base.h"
 #include "sds.h"
+#include "sds_test.h"
+#include <stdlib.h>
 
 #ifndef TEST_SDS
     #define TEST_SDS 1
@@ -13,13 +15,15 @@
 void TestSDS(){}
 #else
 void TestSDS(){
-    // charPrint("hello1");
-    fmtPrint(sdsnew("hello world123"));
-    fmtPrint("hello world");
-    // printf("hello");
+    testSdsNew();
 }
 #endif
 
 void testSdsNew(){
-
+    sds s = sdsnew("hello world new");
+    printf("pointer %p\n",s);
+    fmtPrint(&s);
+    sds s1 = sdsdup(s);
+    printf("pointer %p\n",s1);
+    fmtPrint(&s1);
 }
