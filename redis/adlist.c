@@ -38,6 +38,7 @@ list *listCreate(void)
     return list;
 }
 
+// 链表头部插入
 list *listAddNodeHead(struct list *list, void *value)
 {
     listNode *node;
@@ -53,6 +54,27 @@ list *listAddNodeHead(struct list *list, void *value)
         node->next = list->head;
         list->head->prev = node;
         list->head = node;
+    }
+    list->len++;
+    return list;
+}
+
+// 链表尾部加入
+list *listAddNodeTail(list *list, void *value)
+{
+    listNode *node;
+    if ((node = malloc(sizeof(listNode))) == NULL) {
+        return NULL;
+    }
+    node->value = value;
+    if (list->len == 0) {
+        node->next = node->prev = NULL;
+        list->head = list->tail = node;
+    } else {
+        node->next = NULL;
+        node->prev = list->tail;
+        list->tail->next = node;
+        list->tail = node;
     }
     list->len++;
     return list;

@@ -22,3 +22,4 @@ typedef struct list {
 void listPrint(struct list *list);
 list *listCreate(void);
 list *listAddNodeHead(list *list, void *value);
+list *listAddNodeTail(list *list, void *value);

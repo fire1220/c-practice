@@ -17,6 +17,7 @@ void TestAdList() {}
 #else
 void TestAdList() {
     testListAddNodeHead();
+    testListAddNodeTail();
 }
 #endif
 
@@ -27,5 +28,15 @@ void testListAddNodeHead()
     l = listAddNodeHead(l, sdsnew("篮球1"));
     l = listAddNodeHead(l, sdsnew("足球2"));
     l = listAddNodeHead(l, sdsnew("排球3"));
+    fmtPrint(l);
+}
+
+// 从尾部加入
+void testListAddNodeTail()
+{
+    list *l = listCreate();
+    l = listAddNodeTail(l, sdsnew("苹果1"));
+    l = listAddNodeTail(l, sdsnew("草莓2"));
+    l = listAddNodeTail(l, sdsnew("荔枝3"));
     fmtPrint(l);
 }
