@@ -24,7 +24,7 @@ list *listCreate(void)
     return list;
 }
 
-// 链表头部插入
+// 链表头位置插入
 list *listAddNodeHead(struct list *list, void *value)
 {
     listNode *node;
