@@ -16,6 +16,7 @@ typedef struct people {
 list*:listPrint,                  \
 sds*:sdsPrint,                    \
 size_t:sizeTPrint,                \
+int:intPrint,                     \
 char*:charPrint)(x)
 
 static void charPrint(char *s)
