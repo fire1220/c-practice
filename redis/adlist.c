@@ -7,19 +7,18 @@
 #include <stdlib.h>
 #include "adlist.h"
 #include <stdio.h>
+#include "sds.h"
 
 char *listPrint(list *list)
 {
-    printf("listStruct%lu, %p, %p \n",  list->len, list->head, list->tail);
-    int i = 0;
-    while (1) {
-        listNode *temp = list->head;
-        printf("listNodeStructValue[%d]:%s\n", i, temp->value);
+    printf("list (%lu) \n",  list->len);
+    listNode *temp = list->head;
+    for (int i=0; i < list->len; i++) {
+        printf("[%d] => \"%s\"\n", i, (sds)temp->value);
         temp = temp->next;
         if (temp == NULL) {
             break;
         }
-        i++;
     }
     return NULL;
 }
