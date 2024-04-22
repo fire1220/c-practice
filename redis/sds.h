@@ -2,6 +2,8 @@
 // Created by fire on 2024/3/29.
 //
 
+#include <stdio.h>
+
 typedef char *sds;
 
 typedef struct sdshdr{
