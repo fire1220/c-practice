@@ -20,10 +20,12 @@ void TestSDS(){
 #endif
 
 void testSdsNew(){
-    sds s = sdsnew("hello world new");
-    printf("pointer %p\n",s);
-    fmtPrint(&s);
-    sds s1 = sdsdup(s);
+    sds s1 = sdsnew("hello world new");
     printf("pointer %p\n",s1);
     fmtPrint(&s1);
+    sds s2 = sdsdup(s1);
+    printf("pointer %p\n",s2);
+    fmtPrint(&s2);
+    sds s3 = sdsempty();
+    fmtPrint(&s3);
 }
