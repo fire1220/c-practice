@@ -20,6 +20,7 @@ void TestAdList(){
     list *l = listCreate();
     l = listAddNodeHead(l, sdsnew("篮球1"));
     l = listAddNodeHead(l, sdsnew("足球2"));
+    l = listAddNodeHead(l, sdsnew("排球3"));
     listPrint(l);
 }
 #endif
