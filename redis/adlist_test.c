@@ -8,9 +8,6 @@
 #include "adlist.h"
 #include "sds.h"
 
-#ifndef TEST_AD_LIST
-    #define TEST_AD_LIST 1
-#endif
 
 #if TEST_AD_LIST==0
 void TestAdList() {}

@@ -3,6 +3,7 @@
 //
 #include <stdio.h>
 #include "base.h"
+#include "sds.h"
 
 #ifndef TEST_SDS
     #define TEST_SDS 1
@@ -12,7 +13,7 @@
 void TestSDS(){}
 #else
 void TestSDS(){
-    // charPrint("hello");
+    charPrint("hello");
     // fmtPrint("hello");
     printf("hello");
 }

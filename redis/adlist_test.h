@@ -5,6 +5,9 @@
 #define C_PRACTICE_ADLIST_TEST_H
 
 
+#ifndef TEST_AD_LIST
+#define TEST_AD_LIST 0
+#endif
 
 void TestAdList();
 void testListAddNodeHead();
