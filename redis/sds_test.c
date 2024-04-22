@@ -2,10 +2,9 @@
 // Created by fire on 2024/4/22.
 //
 #include <stdio.h>
-#include "base.h"
+#include "print.h"
 #include "sds.h"
 #include "sds_test.h"
-#include <stdlib.h>
 
 #if TEST_SDS==0
 void TestSDS(){}

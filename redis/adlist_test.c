@@ -3,7 +3,7 @@
 //
 
 // 测试文件
-#include "base.h"
+#include "print.h"
 #include "adlist_test.h"
 #include "adlist.h"
 #include "sds.h"

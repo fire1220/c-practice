@@ -1,8 +1,8 @@
 //
 // Created by fire on 2024/4/22.
 //
-#ifndef C_PRACTICE_BASE_H
-#define C_PRACTICE_BASE_H
+#ifndef C_PRACTICE_PRINT_H
+#define C_PRACTICE_PRINT_H
 
 #include <stdio.h>
 #include "adlist.h"
@@ -55,4 +55,4 @@ static void listPrint(const list *list)
     printf("}\n");
 }
 
-#endif //C_PRACTICE_BASE_H
+#endif //C_PRACTICE_PRINT_H
