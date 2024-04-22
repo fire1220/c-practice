@@ -26,6 +26,7 @@ static inline size_t sdsavail(const sds s)
     return sh->free;
 }
 
+void sdsPrint(sds s);
 sds sdsnewlen(const char *init, size_t initLen);
 sds sdsnew(const char *init);
 sds sdsempty(void);

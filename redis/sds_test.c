@@ -14,6 +14,7 @@ void TestSDS(){}
 #else
 void TestSDS(){
     // charPrint("hello1");
+    fmtPrint(sdsnew("hello world123"));
     fmtPrint("hello world");
     // printf("hello");
 }

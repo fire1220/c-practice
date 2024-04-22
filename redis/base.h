@@ -6,9 +6,11 @@
 
 #include <stdio.h>
 #include "adlist.h"
+#include "sds.h"
 
 #define fmtPrint(x) _Generic((x), \
-list*:listPrint,                   \
+list*:listPrint,                  \
+sds*:sdsPrint,                     \
 char*:charPrint)(x)
 
 static void charPrint(char *s) {

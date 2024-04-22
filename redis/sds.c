@@ -4,6 +4,7 @@
 #include <string.h>
 #include "sds.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 sds sdsnew(const char *init)
 {
@@ -46,4 +47,9 @@ void sdsfree(sds s)
     if (s == NULL) return;
     free(s - sizeof(struct sdshdr));
     s = NULL;
+}
+
+void sdsPrint(sds s)
+{
+    printf("%s\n", s);
 }
