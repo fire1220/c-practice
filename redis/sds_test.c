@@ -13,8 +13,8 @@
 void TestSDS(){}
 #else
 void TestSDS(){
-    charPrint("hello1");
-    // fmtPrint("hello world");
+    // charPrint("hello1");
+    fmtPrint("hello world");
     // printf("hello");
 }
 #endif

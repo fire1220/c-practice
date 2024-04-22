@@ -5,10 +5,11 @@
 #define C_PRACTICE_BASE_H
 
 #include <stdio.h>
+#include "adlist.h"
 
 #define fmtPrint(x) _Generic((x), \
-list*:listPrint \
-)(x)
+list*:listPrint,                   \
+char*:charPrint)(x)
 
 static void charPrint(char *s) {
     printf("%s\n", s);
