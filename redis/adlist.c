@@ -79,3 +79,9 @@ list *listAddNodeTail(list *list, void *value)
     list->len++;
     return list;
 }
+
+list *listInsertNode(list *list, listNode *old_node, void *value, int after)
+{
+
+    return list;
+}
