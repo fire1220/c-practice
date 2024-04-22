@@ -9,21 +9,7 @@
 #include <stdio.h>
 #include "sds.h"
 
-void listPrint(list *list)
-{
-    printf("list (%lu) {\n",  list->len);
-    listNode *temp = list->head;
-    for (int i = 0; i < list->len; i++) {
-        printf("\t[%d] => \"%s\"", i, (sds)temp->value);
-        temp = temp->next;
-        if (temp == NULL) {
-            printf("\n");
-            break;
-        }
-        printf("\n");
-    }
-    printf("}\n");
-}
+
 
 list *listCreate(void)
 {

@@ -49,11 +49,3 @@ void sdsfree(sds s)
     s = NULL;
 }
 
-void sdsPrint(sds *s)
-{
-    printf("sds struct {\n");
-    printf("\t data : \"%s\"\n", *s);
-    printf("\t len  : %zu\n", sdslen(*s));
-    printf("\t free : %zu\n", sdsavail(*s));
-    printf("}\n");
-}

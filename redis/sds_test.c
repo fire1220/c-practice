@@ -7,10 +7,6 @@
 #include "sds_test.h"
 #include <stdlib.h>
 
-#ifndef TEST_SDS
-    #define TEST_SDS 1
-#endif
-
 #if TEST_SDS==0
 void TestSDS(){}
 #else
