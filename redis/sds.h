@@ -2,6 +2,9 @@
 // Created by fire on 2024/3/29.
 //
 
+#ifndef C_PRACTICE_SDS_H
+#define C_PRACTICE_SDS_H
+
 #include <stdio.h>
 
 typedef char *sds;
@@ -30,3 +33,5 @@ size_t sdslen(const sds s);
 sds sdsdup(const sds s);
 void sdsfree(sds s);
 size_t sdsavail(const sds s);
+
+#endif //C_PRACTICE_SDS_H

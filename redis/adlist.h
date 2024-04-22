@@ -1,7 +1,8 @@
 //
 // Created by fire on 2024/3/28.
 //
-
+#ifndef C_PRACTICE_ADLIST_H
+#define C_PRACTICE_ADLIST_H
 
 typedef struct listNode {
     struct listNode *prev;
@@ -25,3 +26,5 @@ list *listAddNodeHead(list *list, void *value);
 list *listAddNodeTail(list *list, void *value);
 list *listInsertNode(list *list, listNode *old_node, void *value, int after);
 void listDelNode(list *list, listNode *node);
+
+#endif //C_PRACTICE_ADLIST_H
