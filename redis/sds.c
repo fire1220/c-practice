@@ -4,7 +4,6 @@
 #include <string.h>
 #include "sds.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 sds sdsnew(const char *init)
 {
