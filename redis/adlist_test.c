@@ -12,9 +12,7 @@
 
 
 #if TEST_AD_LIST==0
-void TestAdList(){
-    printf("没有启动测试");
-}
+void TestAdList(){}
 #else
 void TestAdList(){
     list *l = listCreate();
