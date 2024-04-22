@@ -13,9 +13,9 @@
 void TestSDS(){}
 #else
 void TestSDS(){
-    charPrint("hello");
-    // fmtPrint("hello");
-    printf("hello");
+    charPrint("hello1");
+    // fmtPrint("hello world");
+    // printf("hello");
 }
 #endif
 
