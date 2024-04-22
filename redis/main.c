@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "adlist.h"
 #include "sds.h"
-#include "adlist_test.c"
+#include "adlist_test.h"
 
 int main() {
     TestAdList();
