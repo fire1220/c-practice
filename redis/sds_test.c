@@ -20,7 +20,7 @@ void TestSDS(){
 #endif
 
 void testSdsNew(){
-    sds s1 = sdsnew("hello world new");
+    sds s1 = sdsnew("hello world old");
     printf("pointer %p\n",s1);
     fmtPrint(&s1);
     sds s2 = sdsdup(s1);
@@ -28,4 +28,13 @@ void testSdsNew(){
     fmtPrint(&s2);
     sds s3 = sdsempty();
     fmtPrint(&s3);
+    printf("free s1\n");
+    sdsfree(s1);
+    printf("s1\n");
+    fmtPrint(&s1);
+    sds s4 = sdsnew("hello world new");
+    printf("new s4\n");
+    fmtPrint(&s4);
+    printf("s1\n");
+    fmtPrint(&s1); // 此时s1和s4值是一样的，因为s1内存回收后被s4使用了，所以回收后的地址禁止使用
 }
