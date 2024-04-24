@@ -96,3 +96,11 @@ list *listInsertNode(list *list, listNode *old_node, void *value, int after)
     list->len++;
     return list;
 }
+
+void listDelNode(list *list, listNode *node)
+{
+    node->prev->next = node->next;
+    node->next->prev = node->prev;
+    free(node);
+    list->len--;
+}
