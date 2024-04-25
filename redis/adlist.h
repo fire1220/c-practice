@@ -30,8 +30,13 @@ typedef struct listIter {
     int direction;         // 迭代的方向
 } listIter;
 
+#define listSetDupMethod(l, m) ((l)->dup = (m))
+#define listSetFreeMethod(l, m) ((l)->free = (m))
+#define listSetMatchMethod(l, m) ((l)->match = (m))
 
 list *listCreate(void);
+
+void listRelease(list *list);
 
 list *listAddNodeHead(list *list, void *value);
 

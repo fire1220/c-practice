@@ -22,6 +22,24 @@ list *listCreate(void) {
     return list;
 }
 
+// 释放列表内存
+void listRelease(list *list) {
+    listNode *current, *next;
+    unsigned long len = list->len;
+    current = list->head;
+    while (len--) {
+        next = current->next;
+        if (list->free) {
+            list->free(current->value);
+        } else {
+            free(current->value);
+        }
+        free(current);
+        current = next;
+    }
+    free(list);
+}
+
 // 链表头位置插入
 list *listAddNodeHead(struct list *list, void *value) {
     listNode *node;
@@ -113,8 +131,18 @@ listIter *listGetIterator(list *list, int direction) {
     return iter;
 }
 
-listNode *listNext(listIter *iter){
-    listNode value = iter->next;
+listNode *listNext(listIter *iter) {
+    listNode *current = iter->next;
+    if (current != NULL) {
+        if (iter->direction == AL_START_HEAD) {
+            iter->next = current->next;
+        } else {
+            iter->next = current->prev;
+        }
+    }
+    return current;
+}
 
-    return NULL;
+void listReleaseIterator(listIter *iter) {
+    free(iter);
 }
