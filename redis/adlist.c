@@ -146,3 +146,39 @@ listNode *listNext(listIter *iter) {
 void listReleaseIterator(listIter *iter) {
     free(iter);
 }
+
+list *listDup(list *orig) {
+    if (orig == NULL) {
+        return NULL;
+    }
+    list *copy;
+    if ((copy = listCreate()) == NULL) {
+        return NULL;
+    }
+    listNode *node;
+    copy->free = orig->free;
+    copy->dup = orig->dup;
+    copy->match = orig->match;
+    listIter *iter = listGetIterator(orig, AL_START_HEAD);
+    while ((node = listNext(iter)) != NULL) {
+        void *value;
+        if (copy->dup) {
+            value = copy->dup(node);
+            if (value == NULL) {
+                listRelease(copy);
+                listReleaseIterator(iter);
+                return NULL;
+            }
+        } else {
+            value = node->value;
+        }
+
+        if (listAddNodeTail(copy, value) == NULL) {
+            listRelease(copy);
+            listReleaseIterator(iter);
+            return NULL;
+        }
+    }
+    listReleaseIterator(iter);
+    return copy;
+}
