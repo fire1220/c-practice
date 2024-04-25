@@ -10,9 +10,7 @@
 #include "sds.h"
 
 
-
-list *listCreate(void)
-{
+list *listCreate(void) {
     list *list;
     if ((list = malloc(sizeof(*list))) == NULL)
         return NULL;
@@ -25,8 +23,7 @@ list *listCreate(void)
 }
 
 // 链表头位置插入
-list *listAddNodeHead(struct list *list, void *value)
-{
+list *listAddNodeHead(struct list *list, void *value) {
     listNode *node;
     if ((node = malloc(sizeof(*node))) == NULL) {
         return NULL;
@@ -46,8 +43,7 @@ list *listAddNodeHead(struct list *list, void *value)
 }
 
 // 链表尾部加入
-list *listAddNodeTail(list *list, void *value)
-{
+list *listAddNodeTail(list *list, void *value) {
     listNode *node;
     if ((node = malloc(sizeof(listNode))) == NULL) {
         return NULL;
@@ -66,8 +62,7 @@ list *listAddNodeTail(list *list, void *value)
     return list;
 }
 
-list *listInsertNode(list *list, listNode *old_node, void *value, int after)
-{
+list *listInsertNode(list *list, listNode *old_node, void *value, int after) {
     listNode *node;
     if ((node = malloc(sizeof(*node))) == NULL) {
         return NULL;
@@ -91,14 +86,13 @@ list *listInsertNode(list *list, listNode *old_node, void *value, int after)
         node->prev->next = node;
     }
     if (node->next != NULL) {
-        node->next->prev  = node;
+        node->next->prev = node;
     }
     list->len++;
     return list;
 }
 
-void listDelNode(list *list, listNode *node)
-{
+void listDelNode(list *list, listNode *node) {
     node->prev->next = node->next;
     node->next->prev = node->prev;
     free(node);

@@ -14,16 +14,28 @@ typedef struct list {
     struct listNode *head;
     struct listNode *tail;
     unsigned long len;
+
     void *(*dup)(void *ptr);
+
     void (*free)(void *ptr);
+
     int (*match)(void *ptr, void *key);
 } list;
 
+typedef struct listIter {
+    struct listNode *next; // 当前好迭代的节点
+    int direction;          // 迭代的方向
+} listIter;
+
 
 list *listCreate(void);
+
 list *listAddNodeHead(list *list, void *value);
+
 list *listAddNodeTail(list *list, void *value);
+
 list *listInsertNode(list *list, listNode *old_node, void *value, int after);
+
 void listDelNode(list *list, listNode *node);
 
 #endif //C_PRACTICE_ADLIST_H
