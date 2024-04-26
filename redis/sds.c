@@ -4,15 +4,14 @@
 #include <string.h>
 #include "sds.h"
 #include <stdlib.h>
+#include <sys/mman.h>
 
-sds sdsnew(const char *init)
-{
+sds sdsnew(const char *init) {
     size_t initLen = (init == NULL) ? 0 : strlen(init);
     return sdsnewlen(init, initLen);
 }
 
-sds sdsnewlen(const char *init, size_t initLen)
-{
+sds sdsnewlen(const char *init, size_t initLen) {
     struct sdshdr *sh;
     if (init) {
         sh = malloc(sizeof(*sh) + initLen + 1);
@@ -20,31 +19,31 @@ sds sdsnewlen(const char *init, size_t initLen)
         sh = calloc(1, sizeof(*sh) + initLen + 1);
     }
 
-    if(sh == NULL) return NULL;
+    if (sh == NULL) return NULL;
 
     if (initLen && init) {
         memcpy(sh->buf, init, initLen);
     }
-    sh->len = (int)initLen;
+    sh->len = (int) initLen;
     sh->free = 0;
     sh->buf[initLen] = '\0';
-    return (char*)sh->buf;
+    return (char *) sh->buf;
 }
 
-sds sdsempty(void)
-{
+sds sdsempty(void) {
     return sdsnewlen("", 0);
 }
 
-sds sdsdup(const sds s)
-{
+sds sdsdup(const sds s) {
     return sdsnewlen(s, sdslen(s));
 }
 
-void sdsfree(sds s)
-{
+void sdsfree(sds s) {
     if (s == NULL) return;
     free(s - sizeof(struct sdshdr));
     s = NULL;
 }
 
+void sdsmadvise(sds s) {
+    // madvise()
+}

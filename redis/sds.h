@@ -33,5 +33,6 @@ size_t sdslen(const sds s);
 sds sdsdup(const sds s);
 void sdsfree(sds s);
 size_t sdsavail(const sds s);
+void sdsmadvise(sds s);
 
 #endif //C_PRACTICE_SDS_H
