@@ -47,6 +47,7 @@ void testFreeSdsNew(){
     printf("free后s1\n");
     fmtPrint(&s1);
     sds s4 = sdsnew("hello world new"); // 新建s4
+    printf("pointer s4 %p\n",s1);           // s4的内存地址和s1是相同，说明 mallic 把地址重新分配给s4了
     printf("new s4\n");
     fmtPrint(&s4);
     printf("已经free后的s1\n");
