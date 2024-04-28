@@ -4,17 +4,16 @@
 #include <string.h>
 
 int main() {
-    printf("hello world");
     size_t len = 1024;
-    void *ptr = mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_PRIVATE, -1, 0);
+    void *ptr = mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0);
     if (ptr == MAP_FAILED) {
-        perror("mmap");
+        perror("mmap1");
         exit(EXIT_FAILURE);
     }
     strcpy(ptr, "hello world!");
     printf("%s\n", (char *)ptr);
     if (munmap(ptr, len) == -1) {
-        perror("munmap");
+        perror("munmap2");
         exit(EXIT_FAILURE);
     }
     return 0;
