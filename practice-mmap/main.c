@@ -4,6 +4,7 @@
 #include <string.h>
 #include <unistd.h>
 
+
 // 申请和释放内存案例
 void mmapAndFree();
 // 申请和建议释放
@@ -11,10 +12,35 @@ void mmapAndAdviseFree();
 // 申请大内存并添加大量的数据
 void mmapAdd();
 
+void mmapM();
+
 int main() {
     // mmapAndFree();
-    mmapAndAdviseFree();
+    // mmapAndAdviseFree();
+    mmapM();
     return 0;
+}
+
+void mmapM() {
+    size_t len = 10240;
+    // 申请内存
+    void *ptrA = mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0);
+    if (ptrA == MAP_FAILED) {
+        perror("mmap1");
+        exit(EXIT_FAILURE);
+    }
+    madvise(ptrA, 1024, MADV_HUGEPAGE);
+    printf("申请：ptrA\n");
+    printf("%p\n", (char *)ptrA);
+    strcpy(ptrA, "hello world!");
+    printf("%s\n", (char *)ptrA);
+    // 释放内存
+    if (munmap(ptrA, len) == -1) {
+        perror("munmap2");
+        exit(EXIT_FAILURE);
+    }
+    printf("释放：ptrA\n");
+    sleep(100);
 }
 
 // 申请和释放内存案例
