@@ -2,11 +2,14 @@
 #include <sys/mman.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 // 申请和释放内存案例
 void mmapAndFree();
 // 申请和建议释放
 void mmapAndAdviseFree();
+// 申请大内存并添加大量的数据
+void mmapAdd();
 
 int main() {
     // mmapAndFree();
@@ -81,9 +84,32 @@ void mmapAndAdviseFree(){
     }
     printf("释放：ptrB\n\n");
 
+    // 调用其他方法消耗内存
+    printf("调用其他方法消耗内存-Begin\n");
+    mmapAdd();
+    printf("调用其他方法消耗内存-End\n");
+
     printf("ptrA地址,并重新赋值\n");
     printf("%p\n", (char *)ptrA);
     printf("old：%s\n", (char *)ptrA);
     strcpy(ptrA, "hello world!!");
     printf("new：%s\n", (char *)ptrA);
+}
+
+// 申请大内存并添加大量的数据
+void mmapAdd(){
+    size_t len = 10240;
+    // 申请内存
+    void *ptrA = mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0);
+    if (ptrA == MAP_FAILED) {
+        perror("mmap1");
+        exit(EXIT_FAILURE);
+    }
+    printf("申请：ptrA\n");
+    printf("%p\n", (char *)ptrA);
+    strcpy(ptrA, "hello world!");
+    for (int i = 0; i < 10000; i++) {
+        strcat(ptrA, "hello world!");
+    }
+    // printf("%s\n", (char *)ptrA);
 }
