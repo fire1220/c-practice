@@ -29,7 +29,7 @@ void mmapM() {
         perror("mmap1");
         exit(EXIT_FAILURE);
     }
-    madvise(ptrA, 1024, MADV_HUGEPAGE);
+    // madvise(ptrA, 1024, MADV_HUGEPAGE); // Mac下不能使用，Linux下可以使用MADV_HUGEPAGE进行建议使用内存
     printf("申请：ptrA\n");
     printf("%p\n", (char *)ptrA);
     strcpy(ptrA, "hello world!");
