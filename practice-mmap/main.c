@@ -86,7 +86,9 @@ void mmapAndAdviseFree(){
 
     // 调用其他方法消耗内存
     printf("调用其他方法消耗内存-Begin\n");
-    mmapAdd();
+    for (int i = 0; i < 10000; i++) {
+        mmapAdd();
+    }
     printf("调用其他方法消耗内存-End\n");
 
     printf("ptrA地址,并重新赋值\n");
@@ -98,7 +100,7 @@ void mmapAndAdviseFree(){
 
 // 申请大内存并添加大量的数据
 void mmapAdd(){
-    size_t len = 10240;
+    size_t len = 10240000;
     // 申请内存
     void *ptrA = mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0);
     if (ptrA == MAP_FAILED) {
