@@ -16,5 +16,6 @@ int main() {
         perror("munmap2");
         exit(EXIT_FAILURE);
     }
+
     return 0;
 }
