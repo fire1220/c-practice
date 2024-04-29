@@ -48,6 +48,7 @@ void mmapAndFree(){
 }
 
 // 申请和建议释放内存
+// 建议释放后，内存是否释放有操作系统控制，即便释放后也可以继续使用，使用时系统会自动映射上，好处是内存地址没有变更
 void mmapAndAdviseFree(){
     size_t len = 1024;
     // 申请内存
@@ -65,7 +66,8 @@ void mmapAndAdviseFree(){
         perror("madvise2");
         exit(EXIT_FAILURE);
     }
-    printf("建议释放：ptrA\n");
+    printf("建议释放：ptrA\n\n");
+
     // 申请内存
     void *ptrB = mmap(NULL, len, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANON, -1, 0);
     printf("申请：ptrB\n");
@@ -77,5 +79,11 @@ void mmapAndAdviseFree(){
         perror("munmap3");
         exit(EXIT_FAILURE);
     }
-    printf("释放：ptrB\n");
+    printf("释放：ptrB\n\n");
+
+    printf("ptrA地址,并重新赋值\n");
+    printf("%p\n", (char *)ptrA);
+    printf("old：%s\n", (char *)ptrA);
+    strcpy(ptrA, "hello world!!");
+    printf("new：%s\n", (char *)ptrA);
 }
