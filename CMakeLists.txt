@@ -6,7 +6,7 @@ set(CMAKE_C_STANDARD 11) # C语言版本
 
 set(RedisDir redis/) # 设置执行文件的目录,用于切换执行目录
 # set(RedisDir test)
-# set(RedisDir t-generic-paradigm)
+# set(RedisDir practice-generic)
 # set(RedisDir practice-extern)
 # set(RedisDir ) # 切换成跟目录
 
