@@ -14,9 +14,9 @@ sds sdsnew(const char *init) {
 sds sdsnewlen(const char *init, size_t initLen) {
     struct sdshdr *sh;
     if (init) {
-        sh = malloc(sizeof(*sh) + initLen + 1);
+        sh = malloc(sizeof(*sh) + initLen + 1); // 分配内存，但值不确定
     } else {
-        sh = calloc(1, sizeof(*sh) + initLen + 1);
+        sh = calloc(1, sizeof(*sh) + initLen + 1); // 分配内存并初始化为0
     }
 
     if (sh == NULL) return NULL;
