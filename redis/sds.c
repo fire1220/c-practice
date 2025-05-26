@@ -86,3 +86,22 @@ sds sdscatlen(sds s, const void *t, size_t len) {
 sds sdscat(sds s, const char *t){
     return sdscatlen(s, t, strlen(t));
 }
+
+sds sdscyplen(sds s, const char *t, size_t len){
+    sdshdr *sh = (void *)(s - sizeof(sdshdr));
+    if (sh->len + sh->free < len) {
+        s = sdsMakeRoomFor(s, len - sh->len);
+        if (s == NULL) return NULL;
+        sh = (void *)(s - sizeof(sdshdr));
+    }
+    int totlen = sh->len = sh->free;
+    memcpy(sh->buf, t, len);
+    sh->len = len;
+    sh->free = totlen - len;
+    sh->buf[len] = '\0';
+    return (sds)sh->buf;
+}
+
+sds sdscpy(sds s, const char *t) {
+    return sdscpylen(s, t, sdslen(t));
+}
