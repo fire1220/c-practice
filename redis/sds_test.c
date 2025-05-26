@@ -10,14 +10,26 @@
 void TestSDS(){}
 #else
 void TestSDS(){
-    sds s = sdsnew("hello world");
-    printf("%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
-    s = sdsgrowzero(s, 20);
-    printf("%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
+    testSdsCat();
+    //testSdsgrowzero();
     // testSdsNew();
     // testFreeSdsNew();
 }
 #endif
+
+void testSdsCat(){
+    sds s = sdsnew("hello");
+    printf("%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
+    s = sdscat(s, " world");
+    printf("%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
+}
+
+void testSdsgrowzero(){
+    sds s = sdsnew("hello world");
+    printf("%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
+    s = sdsgrowzero(s, 20);
+    printf("%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
+}
 
 void testSdsNew(){
     sds s1 = sdsnew("hello world old");

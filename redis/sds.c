@@ -69,3 +69,20 @@ sds sdsMakeRoomFor(sds s, size_t addlen){
     newsh->free = (int)(newLen - len);
     return (sds)newsh->buf;
 }
+
+sds sdscatlen(sds s, const void *t, size_t len) {
+    sdshdr *sh;
+    size_t curlen = sdslen(s);
+
+    s = sdsMakeRoomFor(s, len);
+    sh = (sdshdr*)(s- sizeof(sdshdr));
+    memcpy(s+curlen, t, len);
+    sh->len = (int)(len + curlen);
+    sh->free = sh->free - (int)len;
+    sh->buf[len + curlen] = '\0';
+    return s;
+}
+
+sds sdscat(sds s, const char *t){
+    return sdscatlen(s, t, strlen(t));
+}

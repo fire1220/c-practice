@@ -14,5 +14,7 @@
 void TestSDS();
 void testSdsNew();
 void testFreeSdsNew();
+void testSdsgrowzero();
+void testSdsCat();
 
 #endif //C_PRACTICE_SDS_TEST_H
