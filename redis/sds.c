@@ -86,3 +86,7 @@ sds sdscatlen(sds s, const void *t, size_t len) {
 sds sdscat(sds s, const char *t){
     return sdscatlen(s, t, strlen(t));
 }
+
+sds sdscatsds(sds s, sds t) {
+    return sdscatlen(s, t, sdslen(t));
+}

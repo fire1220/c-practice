@@ -10,12 +10,22 @@
 void TestSDS(){}
 #else
 void TestSDS(){
-    testSdsCat();
+    testSdsCatSds();
+    // testSdsCat();
     //testSdsgrowzero();
     // testSdsNew();
     // testFreeSdsNew();
 }
 #endif
+
+void testSdsCatSds(){
+    sds s1 = sdsnew("hello");
+    printf("%s,%zu,%zu\n", s1, sdslen(s1), sdsvail(s1));
+    sds s2 = sdsnew(" world");
+    printf("%s,%zu,%zu\n", s2, sdslen(s2), sdsvail(s2));
+    sds s = sdscatsds(s1, s2);
+    printf("%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
+}
 
 void testSdsCat(){
     sds s = sdsnew("hello");

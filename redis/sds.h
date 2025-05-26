@@ -36,5 +36,6 @@ sds sdsgrowzero(sds s, size_t len);
 sds sdsMakeRoomFor(sds s, size_t addlen);
 sds sdscatlen(sds s, const void *t, size_t len);
 sds sdscat(sds s, const char *t);
+sds sdscatsds(sds s, sds t);
 
 #endif //TEXTC_SDS_H
