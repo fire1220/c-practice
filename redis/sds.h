@@ -1,38 +1,36 @@
 //
-// Created by fire on 2024/3/29.
+// Created by fire on 2025/5/24.
 //
 
-#ifndef C_PRACTICE_SDS_H
-#define C_PRACTICE_SDS_H
+#ifndef TEXTC_SDS_H
+#define TEXTC_SDS_H
 
-#include <stdio.h>
+#define SDS_MAX_PREALLOC (1024*1024)
 
-typedef char *sds;
+#include <string.h>
 
-typedef struct sdshdr{
+typedef char* sds;
+typedef struct {
     int len;
     int free;
     char buf[];
-} sdshdr;
-
-static inline size_t sdslen(const sds s) {
-    // 内存写入是从低地址到高地址，所有第一个元素在低地址，最后一个元素在高地址
-    struct sdshdr *sh = (void *)(s - sizeof(struct sdshdr));
+}sdshdr;
+static inline size_t sdslen(sds s) {
+    sdshdr *sh = (void *)(s - sizeof(sdshdr));
     return sh->len;
 }
-static inline size_t sdsavail(const sds s)
-{
-    struct sdshdr *sh = (void *)(s - sizeof(struct sdshdr));
+static inline size_t sdsvail(sds s) {
+    sdshdr *sh = (sdshdr*)(s - sizeof(sdshdr));
     return sh->free;
 }
-
-sds sdsnewlen(const char *init, size_t initLen);
-sds sdsnew(const char *init);
+sds sdsnew(const char* str);
+sds sdsnewlen(const char *init, size_t initlen);
 sds sdsempty(void);
-size_t sdslen(const sds s);
-sds sdsdup(const sds s);
+size_t sdslen(sds s);
+sds sdsdup(sds s);
 void sdsfree(sds s);
-size_t sdsavail(const sds s);
-void sdsmadvise(sds s);
+size_t sdsvail(sds s);
+sds sdsgrowzero(sds s, size_t len);
+sds sdsMakeRoomFor(sds s, size_t addlen);
 
-#endif //C_PRACTICE_SDS_H
+#endif //TEXTC_SDS_H

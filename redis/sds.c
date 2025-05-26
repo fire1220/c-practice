@@ -1,49 +1,73 @@
 //
-// Created by fire on 2024/3/29.
+// Created by fire on 2025/5/24.
 //
-#include <string.h>
+
+
 #include "sds.h"
+#include <string.h>
 #include <stdlib.h>
-#include <sys/mman.h>
 
-sds sdsnew(const char *init) {
-    size_t initLen = (init == NULL) ? 0 : strlen(init);
-    return sdsnewlen(init, initLen);
-}
+sds sdsnew(const char* init) {
+    size_t initlen = (init == NULL) ? 0 : strlen(init);
+    return sdsnewlen(init, initlen);
+};
 
-sds sdsnewlen(const char *init, size_t initLen) {
-    struct sdshdr *sh;
+sds sdsnewlen(const char *init, size_t initlen) {
+    sdshdr *sh;
     if (init) {
-        sh = malloc(sizeof(*sh) + initLen + 1); // 分配内存，但值不确定
+        sh = malloc(sizeof(*sh) + initlen + 1);
     } else {
-        sh = calloc(1, sizeof(*sh) + initLen + 1); // 分配内存并初始化为0
+        sh = calloc(1, sizeof(*sh) + initlen + 1);
     }
-
     if (sh == NULL) return NULL;
-
-    if (initLen && init) {
-        memcpy(sh->buf, init, initLen);
+    if (init && initlen > 0) {
+        memcpy(sh->buf, init, initlen);
     }
-    sh->len = (int) initLen;
+    sh->len = (int)initlen;
     sh->free = 0;
-    sh->buf[initLen] = '\0';
-    return (char *) sh->buf;
+    sh->buf[initlen] = '\0';
+    return (sds)sh->buf;
 }
 
-sds sdsempty(void) {
+sds sdsempty(void){
     return sdsnewlen("", 0);
 }
 
-sds sdsdup(const sds s) {
+sds sdsdup(sds s) {
     return sdsnewlen(s, sdslen(s));
 }
 
-void sdsfree(sds s) {
+void sdsfree(sds s){
     if (s == NULL) return;
-    free(s - sizeof(struct sdshdr));
-    s = NULL;
+    free(s - sizeof(sdshdr));
 }
 
-void sdsmadvise(sds s) {
-    // madvise()
+sds sdsgrowzero(sds s, size_t len){
+    sdshdr *sh = (sdshdr*)(s - sizeof(sdshdr));
+    if (len <= sh->len) return s;
+    s = sdsMakeRoomFor(s, len-sh->len);
+    if (s == NULL) return NULL;
+    sh = (sdshdr*)(s - sizeof(sdshdr));
+    memset(s+sh->len, 0, len-sh->len+1);
+    size_t totlen = sh->len + sh->free;
+    sh->len = (int)len;
+    sh->free = (int)totlen - sh->len;
+    return s;
+}
+
+sds sdsMakeRoomFor(sds s, size_t addlen){
+    sdshdr *sh, *newsh;
+    sh = (sdshdr*)(s-sizeof(sdshdr));
+    if (sh->free >= addlen)  return s;
+    size_t len = sdslen(s);
+    size_t newLen = len+addlen;
+    if (addlen <= SDS_MAX_PREALLOC) {
+        newLen *= 2;
+    } else {
+        newLen += SDS_MAX_PREALLOC;
+    }
+    newsh = realloc(sh, sizeof(*newsh) + newLen + 1);
+    if (newsh == NULL) return NULL;
+    newsh->free = (int)(newLen - len);
+    return (sds)newsh->buf;
 }
