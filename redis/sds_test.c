@@ -10,8 +10,12 @@
 void TestSDS(){}
 #else
 void TestSDS(){
+    sds s = sdsnew("hello world");
+    printf("%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
+    s = sdsgrowzero(s, 20);
+    printf("%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
     // testSdsNew();
-    testFreeSdsNew();
+    // testFreeSdsNew();
 }
 #endif
 
