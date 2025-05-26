@@ -8,6 +8,8 @@
 #define SDS_MAX_PREALLOC (1024*1024)
 
 #include <string.h>
+#include <stdlib.h>
+
 
 typedef char* sds;
 typedef struct {

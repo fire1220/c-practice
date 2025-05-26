@@ -4,8 +4,6 @@
 
 
 #include "sds.h"
-#include <string.h>
-#include <stdlib.h>
 
 sds sdsnew(const char* init) {
     size_t initlen = (init == NULL) ? 0 : strlen(init);
