@@ -111,18 +111,16 @@ sds sdscpy(sds s, const char *t) {
 }
 
 sds sdstrim(sds s, const char *cset) {
-    sdshdr *sh = (void*)(s - sizeof(sdshdr));
-    int beginIndex = 0;
-    int endIndex = sh->len;
-    int totlen = sh->free + sh->len;
-    while (beginIndex <= endIndex && strchr(s[beginIndex], *cset)) beginIndex++;
-    while (beginIndex <= endIndex && strchr(s[endIndex], *cset)) endIndex--;
-    int endlen = endIndex-beginIndex;
-    if (beginIndex > 0) {
-        memcpy(s, s[beginIndex], endlen);
-    }
-    s[endlen] = '\0';
-    sh->len = endlen;
-    sh->free = totlen - endlen;
+    sdshdr *sh = (void *)(s - sizeof(sdshdr));
+    char *sp, *ep, *start, *end;
+    sp = start = s;
+    end = ep = s + sh->len;
+    while (sp <= end && strchr(cset, *sp)) sp++;
+    while (ep > start && strchr(cset, *ep)) ep--;
+    size_t len = (sp > ep) ? 0 : (ep - sp) + 1;
+    if (sp != s) memcpy(s, sp, len);
+    sh->free = sh->free + sh->len - (int)len;
+    sh->len = (int)len;
+    sh->buf[len] = '\0';
     return s;
 }

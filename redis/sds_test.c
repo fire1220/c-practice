@@ -10,13 +10,20 @@
 void TestSDS(){}
 #else
 void TestSDS(){
-    testSdsCatSds();
+    testSDStrim();
+    // testSdsCatSds();
     // testSdsCat();
     //testSdsgrowzero();
     // testSdsNew();
     // testFreeSdsNew();
 }
 #endif
+
+void testSDStrim(){
+    sds s = sdsnew("AA...AA.a.aa.aHelloWorld     :::");
+    s = sdstrim(s,"A. :");
+    printf("%s\n", s);
+}
 
 void testSdsCatSds(){
     sds s1 = sdsnew("hello");
