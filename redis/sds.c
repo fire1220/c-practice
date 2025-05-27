@@ -90,3 +90,22 @@ sds sdscat(sds s, const char *t){
 sds sdscatsds(sds s, sds t) {
     return sdscatlen(s, t, sdslen(t));
 }
+
+sds sdscpylen(sds s, const char *t, size_t len){
+    sdshdr *sh = (void *)(s - sizeof(sdshdr));
+    if (sh->len + sh->free < len) {
+        s = sdsMakeRoomFor(s, len - sh->len);
+        if (s == NULL) return NULL;
+        sh = (void *)(s - sizeof(sdshdr));
+    }
+    int totlen = sh->len = sh->free;
+    memcpy(sh->buf, t, len);
+    sh->len = (int)len;
+    sh->free = totlen - (int)len;
+    sh->buf[len] = '\0';
+    return (sds)sh->buf;
+}
+
+sds sdscpy(sds s, const char *t) {
+    return sdscpylen(s, t,strlen(t));
+}
