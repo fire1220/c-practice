@@ -109,3 +109,7 @@ sds sdscpylen(sds s, const char *t, size_t len){
 sds sdscpy(sds s, const char *t) {
     return sdscpylen(s, t,strlen(t));
 }
+
+sds sdstrim(sds s, const char *cset) {
+
+}
