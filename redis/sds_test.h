@@ -18,5 +18,6 @@ void testSdsgrowzero();
 void testSdsCat();
 void testSdsCatSds();
 void testSDStrim();
+void testSDSrange();
 
 #endif //C_PRACTICE_SDS_TEST_H

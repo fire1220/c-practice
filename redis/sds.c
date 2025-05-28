@@ -124,3 +124,24 @@ sds sdstrim(sds s, const char *cset) {
     sh->buf[len] = '\0';
     return s;
 }
+
+void sdsrange(sds s, int start, int end) {
+    sdshdr *sh = (void *)(s - sizeof(sdshdr));
+    if (sh->len == 0) return;
+    if (start < 0) {
+        start = sh->len + start;
+        if (start < 0) start = 0;
+    }
+    if (end < 0) {
+        end = sh->len + end;
+        if (end < 0) end = 0;
+    }
+    if (end >= sh->len)  end = sh->len - 1; 
+    int len = start > end ? 0 : end - start + 1;
+    if (len > 0 && start >= sh->len) len = 0;
+    if (start && len) memcpy(s, s+start, len);
+    sh->free = sh->free + sh->len - len;
+    sh->len = len;
+    sh->buf[len] = '\0';
+    return;
+}
