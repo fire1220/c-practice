@@ -127,7 +127,7 @@ sds sdstrim(sds s, const char *cset) {
 
 void sdsrange(sds s, int start, int end) {
     sdshdr *sh = (void *)(s - sizeof(sdshdr));
-    if (sh->len == 0) return ;
+    if (sh->len == 0) return;
     if (start < 0) {
         start = sh->len + start;
         if (start < 0) start = 0;
