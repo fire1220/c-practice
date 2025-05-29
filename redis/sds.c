@@ -143,3 +143,22 @@ void sdsrange(sds s, int start, int end) {
     sh->len = len;
     sh->buf[len] = '\0';
 }
+
+void sdsclear(sds s) {
+    sdshdr *sh = (void *)(s - sizeof(sdshdr));
+    sh->free += sh->len;
+    sh->len = 0;
+    sh->buf[0] = '\0';
+}
+
+int sdscmp(sds s1, sds s2) {
+    int l1, l2, minlen, cmp;
+    l1 = sdslen(s1);
+    l2 = sdslen(s2);
+    minlen = l1 <= l2 ? l1 : l2;
+    cmp = memcmp(s1, s2, minlen);
+    if (cmp == 0) {
+        return l1 - l2;
+    }
+    return cmp;
+}

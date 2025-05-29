@@ -10,7 +10,8 @@
 void TestSDS(){}
 #else
 void TestSDS(){
-    testSDSrange();
+    testSDScmp();
+    // testSDSrange();
     // testSDStrim();
     // testSdsCatSds();
     // testSdsCat();
@@ -19,6 +20,17 @@ void TestSDS(){
     // testFreeSdsNew();
 }
 #endif
+
+void testSDScmp(){
+    sds s1 = sdsnew("hello wo");
+    printf("%s,%zu,%zu\n", s1, sdslen(s1), sdsvail(s1));
+
+    sds s2 = sdsnew("hello world");
+    printf("%s,%zu,%zu\n", s2, sdslen(s2), sdsvail(s2));
+
+    int cmp = sdscmp(s1, s2);
+    printf("%d\n", cmp);
+}
 
 void testSDSrange(){
     sds s = sdsnew("hello world");
