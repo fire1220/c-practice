@@ -142,5 +142,4 @@ void sdsrange(sds s, int start, int end) {
     sh->free = sh->free + sh->len - len;
     sh->len = len;
     sh->buf[len] = '\0';
-    return;
 }
