@@ -39,5 +39,6 @@ sds sdscat(sds s, const char *t);
 sds sdscatsds(sds s, sds t);
 sds sdscpylen(sds s, const char *t, size_t len);
 sds sdstrim(sds s, const char *cset);
+void sdsrange(sds s, int start, int end);
 
 #endif //TEXTC_SDS_H

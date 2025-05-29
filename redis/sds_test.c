@@ -10,7 +10,8 @@
 void TestSDS(){}
 #else
 void TestSDS(){
-    testSDStrim();
+    testSDSrange();
+    // testSDStrim();
     // testSdsCatSds();
     // testSdsCat();
     //testSdsgrowzero();
@@ -18,6 +19,29 @@ void TestSDS(){
     // testFreeSdsNew();
 }
 #endif
+
+void testSDSrange(){
+    sds s = sdsnew("hello world");
+    printf("%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
+    sdsrange(s, 2, 3);
+    printf("2,3:%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
+
+    s = sdsnew("hello world");
+    sdsrange(s, 2, -1);
+    printf("2,-1:%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
+
+    s = sdsnew("hello world");
+    sdsrange(s, 2, -2);
+    printf("2,-2:%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
+
+    s = sdsnew("hello world");
+    sdsrange(s, 3, 2);
+    printf("3,2:%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
+
+    s = sdsnew("hello world");
+    sdsrange(s, -2, 2);
+    printf("-2,2:%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
+}
 
 void testSDStrim(){
     sds s = sdsnew("AA...AA.a.aa.aHelloWorld     :::");
