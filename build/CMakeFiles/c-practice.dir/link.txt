@@ -1,0 +1,1 @@
+/usr/bin/clang -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names "CMakeFiles/c-practice.dir/redis/adlist.c.o" "CMakeFiles/c-practice.dir/redis/adlist_test.c.o" "CMakeFiles/c-practice.dir/redis/main.c.o" "CMakeFiles/c-practice.dir/redis/sds.c.o" "CMakeFiles/c-practice.dir/redis/sds_test.c.o" -o c-practice

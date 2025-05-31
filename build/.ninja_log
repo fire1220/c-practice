@@ -1,0 +1,7 @@
+# ninja log v6
+10	356	1748711710089376691	CMakeFiles/c-practice.dir/redis/main.c.o	e750b5ca4eb2b8a3
+7	396	1748711710086746766	CMakeFiles/c-practice.dir/redis/adlist_test.c.o	bd3355bc6ff064da
+4	444	1748711710083571159	CMakeFiles/c-practice.dir/redis/adlist.c.o	bad64df0a9663067
+16	456	1748711710096035649	CMakeFiles/c-practice.dir/redis/sds_test.c.o	a7295149cb6d3474
+12	574	1748711710091166626	CMakeFiles/c-practice.dir/redis/sds.c.o	fde515f2eae5baab
+574	878	1748711710653720419	c-practice	be21ad207a3c6658
