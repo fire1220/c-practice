@@ -136,19 +136,29 @@ void sdsrange(sds s, int start, int end) {
         end = sh->len + end;
         if (end < 0) end = 0;
     }
-    if (end >= sh->len)  end = sh->len - 1; 
-    int len = start > end ? 0 : end - start + 1;
-    if (len > 0 && start >= sh->len) len = 0;
-    if (start && len) memcpy(s, s+start, len);
+    if (end >= sh->len) end = sh->len - 1;
+    int len = (start > end) ? 0 : end - start + 1;
+    if (start && len) memcpy(s, s + start, len);
     sh->free = sh->free + sh->len - len;
     sh->len = len;
     sh->buf[len] = '\0';
-    return;
 }
 
-void sdsclear(sds s){
+void sdsclear(sds s) {
     sdshdr *sh = (void *)(s - sizeof(sdshdr));
-    sh->free = sh->len + sh->free;
+    sh->free += sh->len;
     sh->len = 0;
     sh->buf[0] = '\0';
+}
+
+int sdscmp(sds s1, sds s2) {
+    int l1, l2, minlen, cmp;
+    l1 = sdslen(s1);
+    l2 = sdslen(s2);
+    minlen = l1 <= l2 ? l1 : l2;
+    cmp = memcmp(s1, s2, minlen);
+    if (cmp == 0) {
+        return l1 - l2;
+    }
+    return cmp;
 }

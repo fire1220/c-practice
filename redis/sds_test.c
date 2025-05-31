@@ -10,7 +10,8 @@
 void TestSDS(){}
 #else
 void TestSDS(){
-    testSDSrange();
+    testSDScmp();
+    // testSDSrange();
     // testSDStrim();
     // testSdsCatSds();
     // testSdsCat();
@@ -20,13 +21,24 @@ void TestSDS(){
 }
 #endif
 
+void testSDScmp(){
+    sds s1 = sdsnew("hello wo");
+    printf("%s,%zu,%zu\n", s1, sdslen(s1), sdsvail(s1));
+
+    sds s2 = sdsnew("hello world");
+    printf("%s,%zu,%zu\n", s2, sdslen(s2), sdsvail(s2));
+
+    int cmp = sdscmp(s1, s2);
+    printf("%d\n", cmp);
+}
+
 void testSDSrange(){
     sds s = sdsnew("hello world");
     printf("%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
 
     s = sdsnew("hello world");
     sdsrange(s, 0, -1);
-    printf(" 0, -1:%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
+    printf("0, -1:%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
 
     s = sdsnew("hello world");
     sdsrange(s, 0, 3);
@@ -44,6 +56,21 @@ void testSDSrange(){
     sdsrange(s, 3, -3);
     printf("3, -3:%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
 
+    s = sdsnew("hello world");
+    sdsrange(s, -3, -1);
+    printf("-3, -1:%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
+
+    s = sdsnew("hello world");
+    sdsrange(s, -3, 9);
+    printf("-3, 9:%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
+
+    s = sdsnew("hello world");
+    sdsrange(s, 15, -1);
+    printf("15, -1:%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
+
+    s = sdsnew("hello world");
+    sdsrange(s, 0, 15);
+    printf("0, 15:%s,%zu,%zu\n", s, sdslen(s), sdsvail(s));
 }
 
 void testSDStrim(){
