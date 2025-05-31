@@ -42,5 +42,6 @@ sds sdstrim(sds s, const char *cset);
 void sdsrange(sds s, int start, int end);
 void sdsclear(sds s);
 int sdscmp(sds s1, sds s2);
+sds *sdssplitlen(const char *s, int len, const char *sep, int seplen, int *count);
 
 #endif //TEXTC_SDS_H

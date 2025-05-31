@@ -10,7 +10,8 @@
 void TestSDS(){}
 #else
 void TestSDS(){
-    testSDScmp();
+    testSDSsplitlen();
+    // testSDScmp();
     // testSDSrange();
     // testSDStrim();
     // testSdsCatSds();
@@ -20,6 +21,20 @@ void TestSDS(){
     // testFreeSdsNew();
 }
 #endif
+
+void testSDSsplitlen(){
+    const char *s = "he llo wo rld";
+    const char *sep = " ";
+    int count;
+    sds *st = sdssplitlen(s, strlen(s), sep, strlen(sep), &count);
+    if (st == NULL) {
+        printf("什么都没有");
+        return;
+    }
+    for (int i = 0; i < count; i++) {
+        printf("%s,%zu,%zu\n", st[i], sdslen(st[i]), sdsvail(st[i]));
+    }
+}
 
 void testSDScmp(){
     sds s1 = sdsnew("hello wo");

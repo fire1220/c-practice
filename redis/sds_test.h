@@ -20,5 +20,7 @@ void testSdsCatSds();
 void testSDStrim();
 void testSDSrange();
 void testSDScmp();
+void testSDSsplitlen();
+
 
 #endif //C_PRACTICE_SDS_TEST_H

@@ -162,3 +162,45 @@ int sdscmp(sds s1, sds s2) {
     }
     return cmp;
 }
+
+sds *sdssplitlen(const char *s, int len, const char *sep, int seplen, int *count) {
+    int elements = 0, slots = 5 ,start = 0;
+    sds *tokens;
+    if (len < 0 || seplen <= 0) return NULL;
+    tokens = malloc(sizeof(sds)*slots);
+    if (tokens == NULL) return NULL;
+    if (len == 0) {
+        *count = 0;
+        return tokens;
+    }
+
+    for (int i=0; i < len - seplen - 1; i++) {
+        if (elements+2 > slots) {
+            sds *newtokens;
+            slots *= 2;
+            newtokens = realloc(tokens, sizeof(sds)*slots);
+            if (newtokens == NULL) goto cleanup;
+            tokens = newtokens;
+        }
+        if (seplen == 1 && *(s+i) == sep[0] || memcmp(s+i, sep, seplen) == 0) {
+            tokens[elements] = sdsnewlen(s+start, i-start);
+            if (tokens[elements] == NULL) goto cleanup;
+            elements++;
+            start = i + seplen;
+            i = i+seplen-1;
+        }
+    }
+    tokens[elements] = sdsnewlen(s+start, len-start);
+    if (tokens[elements] == NULL) goto cleanup;
+    elements++;
+    *count = elements;
+    return tokens;
+
+cleanup:
+    {
+        for (int i=0; i<elements; i++) sdsfree(tokens[i]);
+        free(tokens);
+        *count = 0;
+        return NULL;
+    }
+}
