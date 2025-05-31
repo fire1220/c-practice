@@ -145,3 +145,10 @@ void sdsrange(sds s, int start, int end) {
     sh->buf[len] = '\0';
     return;
 }
+
+void sdsclear(sds s){
+    sdshdr *sh = (void *)(s - sizeof(sdshdr));
+    sh->free = sh->len + sh->free;
+    sh->len = 0;
+    sh->buf[0] = '\0';
+}
