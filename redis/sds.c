@@ -204,3 +204,22 @@ cleanup:
         return NULL;
     }
 }
+
+void sdsfreesplitres(sds *tokens, int count) {
+    if (!tokens) return;
+    while(count--)
+        sdsfree(tokens[count]);
+    free(tokens);
+}
+
+void sdstolower(sds s) {
+    if (s == NULL) return;
+    int len = sdslen(s);
+    for (int i = 0; i < len; i++) s[i] = tolower(s[i]);
+}
+
+void sdstoupper(sds s) {
+    if (s == NULL) return;
+    int len = sdslen(s);
+    for (int i = 0; i < len; i++) s[i] = toupper(s[i]);
+}

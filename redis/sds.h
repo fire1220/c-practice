@@ -9,6 +9,7 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 
 typedef char* sds;
@@ -43,5 +44,7 @@ void sdsrange(sds s, int start, int end);
 void sdsclear(sds s);
 int sdscmp(sds s1, sds s2);
 sds *sdssplitlen(const char *s, int len, const char *sep, int seplen, int *count);
+void sdsfreesplitres(sds *tokens, int count);
+void sdstolower(sds s);
 
 #endif //TEXTC_SDS_H
