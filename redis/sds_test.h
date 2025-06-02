@@ -6,7 +6,7 @@
 
 // 是否开启测试：0否1是
 #ifndef TEST_SDS
-#define TEST_SDS 1
+#define TEST_SDS 0
 #endif
 
 #include "sds.h"

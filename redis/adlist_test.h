@@ -1,17 +1,14 @@
-//
-// Created by fire on 2024/4/22.
-//
-#ifndef C_PRACTICE_ADLIST_TEST_H
-#define C_PRACTICE_ADLIST_TEST_H
-
+#ifndef C_PRACTICE_SDS_TEST_H
+#define C_PRACTICE_SDS_TEST_H
 
 // 是否开启测试：0否1是
-#ifndef TEST_AD_LIST
-#define TEST_AD_LIST 0
+#ifndef TEST_SDS
+#define TEST_SDS 0
 #endif
 
-void TestAdList();
-void testListAddNodeHead();
-void testListAddNodeTail();
 
-#endif //C_PRACTICE_ADLIST_TEST_H
+
+
+
+
+#endif
